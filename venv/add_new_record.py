@@ -419,6 +419,7 @@ class AddRecordScreen(QWidget):
         dddlvillage = self.driver.find_element(By.XPATH, '//*[@id="ddlvillage"]')
         select_object = Select(dddlvillage)
         select_object.select_by_value('1623024')#1623024 for vommali, 1623004 for koormanatha puram
+        time.sleep(5)
         self.driver.find_element(By.XPATH, '//*[@id="btngetdetails"]').click()
         time.sleep(1)
         self.readExcelAndFillData()
@@ -491,9 +492,9 @@ class AddRecordScreen(QWidget):
 
 
 
-if __name__ == '__main__':
-    app = QApplication(sys.argv)
-
-    home = AddRecordScreen()
-    home.show()
-    sys.exit(app.exec_())
+# if __name__ == '__main__':
+#     app = QApplication(sys.argv)
+#
+#     home = AddRecordScreen()
+#     home.show()
+#     sys.exit(app.exec_())
