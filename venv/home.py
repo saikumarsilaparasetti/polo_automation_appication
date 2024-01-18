@@ -18,7 +18,6 @@ class HomeScreen(QWidget):
     def __init__(self):
         super().__init__()
         # app = QApplication(sys.argv)
-        print("home screen called")
         self.setWindowTitle("Home Screen")
         self.resize(500, 120)
         # self.spinner = WaitingSpinner(self)  # Create WaitingSpinner instance

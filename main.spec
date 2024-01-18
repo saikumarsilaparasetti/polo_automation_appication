@@ -5,7 +5,7 @@ a = Analysis(
     ['venv/main.py'],
     pathex=[],
     binaries=[],
-    datas=[],
+    datas=[('venv/blank.pdf', '.')],
     hiddenimports=[],
     hookspath=[],
     hooksconfig={},
