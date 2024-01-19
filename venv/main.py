@@ -110,7 +110,8 @@ class LoginForm(QWidget):
     # 	msg.exec_()
 
     def make_api_request(self, userName, password):
-        url = "http://localhost:3000/user/login"
+        # url = "http://localhost:3000/user/login"
+        url = ""
         # self.spinner.start()
         self.api_caller.make_api_call(url, "POST", {"userName": userName, "password": password})
 

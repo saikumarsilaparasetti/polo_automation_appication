@@ -99,9 +99,9 @@ class AddRecordScreen(QWidget):
         self.openBrowserButton.setDisabled(True)
         self.openBrowserButton.clicked.connect(lambda: [self.openBrowser(),self.openBrowserButton.setDisabled(True), self.postLoginButton.setEnabled(True) ])
 
-        self.postLoginButton = QPushButton("Click after successfully logged in")
-        self.postLoginButton.setDisabled(True)
-        self.postLoginButton.clicked.connect(lambda:[self.openBrowserButton.setDisable(True), openAddRecordPage])
+        # self.postLoginButton = QPushButton("Click after successfully logged in")
+        # self.postLoginButton.setDisabled(True)
+        # self.postLoginButton.clicked.connect(lambda:[self.openBrowserButton.setDisable(True), openAddRecordPage])
 
         layout = QGridLayout()  # Or any other layout you're usingß
         layout.addWidget(self.selectExcelButton)
@@ -274,9 +274,8 @@ class AddRecordScreen(QWidget):
 
         # To Upload File//*[@id="grAddRecord_txtnotalno_0"]
         s = self.driver.find_element(By.XPATH, '//*[@id="filetahsil"]')
-        curr_dirname = os.path.dirname(__file__)
-        blank_filename = os.path.join(curr_dirname, 'blank.pdf')
-        s.send_keys(self.resource_path("blank.pdf"))
+
+        s.send_keys(self.pdffilename)
         time.sleep(.20)
         self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txttotalextent_0"]').send_keys(str(lpmext))
 
