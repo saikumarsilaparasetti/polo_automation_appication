@@ -97,7 +97,7 @@ class AddRecordScreen(QWidget):
 
         self.openBrowserButton = QPushButton("Open browser")
         self.openBrowserButton.setDisabled(True)
-        self.openBrowserButton.clicked.connect(lambda: [self.openBrowser(),self.openBrowserButton.setDisabled(True), self.postLoginButton.setEnabled(True) ])
+        self.openBrowserButton.clicked.connect(lambda: [self.openBrowser(),self.openBrowserButton.setDisabled(True), ])
 
         # self.postLoginButton = QPushButton("Click after successfully logged in")
         # self.postLoginButton.setDisabled(True)
