@@ -115,22 +115,39 @@ class AddRecordScreen(QWidget):
         layout.setRowMinimumHeight(2, 75)
         self.setLayout(layout)
 
-    def addRecordHelper(self,ind, lpmno, lpmext, base_survey_no, sd_no, land_nature_webland, land_classification, land_nature_broad_cat, land_nature_sub_cat, land_nature_sub_cat_two, land_classification_broad_cat,land_classification_sub_cat,land_classification_sub_cat_two,land_usage, source_of_irrigation,katha_num, pattadhar_name, relation_name):
+    def addRecordHelper(self,ind, lpmno, lpmext, base_survey_no, sd_no, land_nature_webland,total_ext, land_classification, land_nature_broad_cat, land_nature_sub_cat, land_nature_sub_cat_two, land_classification_broad_cat,land_classification_sub_cat,land_classification_sub_cat_two,land_usage, source_of_irrigation,katha_num, pattadhar_name, relation_name):
         time.sleep(1)
         self.driver.find_element(By.XPATH, '//*[@id="liselected"]/a').click()
 
         time.sleep(1)
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtlpmno_0"]').send_keys(str(lpmno))
-        time.sleep(.10)
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtlpmnoExtent_0"]').send_keys(str(lpmext))
-        time.sleep(.10)
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtwebsysno_0"]').send_keys(str(base_survey_no))
-        time.sleep(.10)
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtwebsubno_0"]').send_keys(str(sd_no))
-        time.sleep(.10)
-        self.driver.find_element(By.XPATH, '// *[ @ id = "grAddRecord_txttotalextent_0"]').send_keys(str(lpmext))
-        time.sleep(1)
+        lpm_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtlpmno_0"]')
+        lpm_input.clear()
+        lpm_input.send_keys(str(lpmno))
 
+        time.sleep(.10)
+        lpm_ext_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtlpmnoExtent_0"]')
+        lpm_ext_input.clear()
+        lpm_ext_input.send_keys(str(lpmext))
+
+
+        time.sleep(.10)
+        base_survery_no_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtwebsysno_0"]')
+        base_survery_no_input.clear()
+        base_survery_no_input.send_keys(str(base_survey_no))
+
+
+        time.sleep(.10)
+        sd_no_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtwebsubno_0"]')
+        sd_no_input.clear()
+        sd_no_input.send_keys(str(sd_no))
+
+
+        time.sleep(.10)
+        total_ext_input = self.driver.find_element(By.XPATH, '// *[ @ id = "grAddRecord_txttotalextent_0"]')
+        total_ext_input.clear()
+        total_ext_input.send_keys(str(lpmext))
+
+        time.sleep(1)
         try:
             element = WebDriverWait(self.driver, 60).until(
                 EC.presence_of_element_located(
@@ -241,7 +258,10 @@ class AddRecordScreen(QWidget):
             print("Exception in source of irrigation!!")
 
         time.sleep(1)
-        self.driver.find_element(By.XPATH, '// *[ @ id = "grAddRecord_txtkhatano_0"]').send_keys(str(katha_num))
+        katha_no_input = self.driver.find_element(By.XPATH, '// *[ @ id = "grAddRecord_txtkhatano_0"]')
+        katha_no_input.clear()
+        katha_no_input.send_keys(str(katha_num))
+
 
         self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_btnKhata_0"]').click()
 
@@ -277,7 +297,10 @@ class AddRecordScreen(QWidget):
 
         s.send_keys(self.pdffilename)
         time.sleep(.20)
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txttotalextent_0"]').send_keys(str(lpmext))
+        total_ext_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txttotalextent_0"]')
+        total_ext_input.clear()
+        total_ext_input.send_keys(str(total_ext))
+
 
         try:
             element = WebDriverWait(self.driver, 60).until(
@@ -300,31 +323,46 @@ class AddRecordScreen(QWidget):
         time.sleep(2)
 
         if str(pattadarName) == str(float('nan')) and str(pattadarRelation) == str(float('nan')):
-            self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerFname_0"]').send_keys(
-                str(relation_name))
+            owner_phone_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerFname_0"]')
+            owner_phone_input.clear()
+            owner_phone_input.send_keys(str(relation_name))
+
             time.sleep(.30)
-            self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerName_0"]').send_keys(
-                str(pattadhar_name))
+            father_name_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerName_0"]')
+            father_name_input.clear()
+            father_name_input.send_keys(str(pattadhar_name))
+
+
             time.sleep(.30)
-            self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtpattdarname_0"]').send_keys(
-                str(pattadhar_name))
+            owner_name_input_ = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtpattdarname_0"]')
+            owner_name_input_.clear()
+            owner_name_input_.send_keys(str(pattadhar_name))
+
+
             time.sleep(.30)
-            self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtpattadarFname_0"]').send_keys(
-                str(relation_name))
+            owner_father_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtpattadarFname_0"]')
+            owner_father_input.clear()
+            owner_father_input.send_keys(str(relation_name))
 
         else:
-            self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerName_0"]').send_keys(
-                str(pattadarName))
-            self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerFname_0"]').send_keys(
-                str(pattadarRelation))
+            owner_name_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerName_0"]')
+            owner_name_input.clear()
+            owner_name_input.send_keys(str(pattadarName))
+
+            onwer_father_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerFname_0"]')
+            onwer_father_input.clear()
+            onwer_father_input.send_keys(str(pattadarRelation))
 
         time.sleep(1)
 
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerExtent_0"]').send_keys(
-            str(lpmext))
+        lpm_ext_input = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtEnjoyerExtent_0"]')
+        lpm_ext_input.clear()
+        lpm_ext_input.send_keys(str(lpmext))
+
         time.sleep(.5)
-        self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtpattadarExtent_0"]').send_keys(
-            str(lpmext))
+        lpm_ext_input_ = self.driver.find_element(By.XPATH, '//*[@id="grAddRecord_txtpattadarExtent_0"]')
+        lpm_ext_input_.clear()
+        lpm_ext_input_.send_keys(str(lpmext))
         time.sleep(1)
 
         try:
@@ -447,6 +485,7 @@ class AddRecordScreen(QWidget):
                     sd_no = df['sd_no'][ind]
 
                     land_nature_webland = df['land_nature_webland'][ind]
+                    total_ext = dp["total_ext"][ind]
                     land_classification = df['land_classification'][ind]
                     land_nature_broad_cat = df['land_nature_broad_cat'][ind]
                     land_nature_sub_cat = df["land_nature_sub_cat"][ind]
@@ -464,7 +503,7 @@ class AddRecordScreen(QWidget):
                     how_aquired = df['how_acquired'][ind]
 
                     if str(df['status'][ind]).lower() != "completed":
-                            response = self.addRecordHelper(ind, lpmno, lpmext, base_survey_no, sd_no, land_nature_webland, land_classification, land_nature_broad_cat, land_nature_sub_cat, land_nature_sub_cat_two, land_classification_broad_cat,land_classification_sub_cat,land_classification_sub_cat_two,land_usage, source_of_irrigation,katha_num, pattadhar_name, relation_name  )
+                            response = self.addRecordHelper(ind, lpmno, lpmext, base_survey_no, sd_no, land_nature_webland,total_ext, land_classification, land_nature_broad_cat, land_nature_sub_cat, land_nature_sub_cat_two, land_classification_broad_cat,land_classification_sub_cat,land_classification_sub_cat_two,land_usage, source_of_irrigation,katha_num, pattadhar_name, relation_name  )
                             if response:
                                 df.at[ind, 'status'] = "Completed"
                             else:
@@ -491,9 +530,9 @@ class AddRecordScreen(QWidget):
 
 
 
-# if __name__ == '__main__':
-#     app = QApplication(sys.argv)
-#
-#     home = AddRecordScreen()
-#     home.show()
-#     sys.exit(app.exec_())
+if __name__ == '__main__':
+    app = QApplication(sys.argv)
+
+    home = AddRecordScreen()
+    home.show()
+    sys.exit(app.exec_())
